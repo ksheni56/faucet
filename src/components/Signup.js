@@ -86,7 +86,8 @@ class Signup extends Component {
         }
 
         if (paramEmail && paramUsername && paramToken) {
-            setStep('phoneNumber');
+            //setStep('phoneNumber');
+            setStep('finish');
         }
 
         if (!paramUsername && step === 'username') {
