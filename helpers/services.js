@@ -37,10 +37,18 @@ const createAccountDelegator = getEnv('DELEGATOR_USERNAME');
 const createAccountFee = getEnv('CREATE_ACCOUNT_FEE');
 const createAccountWif = getEnv('DELEGATOR_ACTIVE_WIF');
 const recaptchaSecret = getEnv('RECAPTCHA_SECRET');
+const chainId = getEnv('CHAIN_ID');
+const addressPrefix = getEnv('ADDRESS_PREFIX');
+
+// See https://github.com/steemit/steem-js/tree/master/doc#config
 
 const rpcNode = getEnv('STEEMJS_URL');
 if (rpcNode) {
-    steem.api.setOptions({ url: rpcNode });
+    steem.api.setOptions({
+        url: rpcNode,
+        address_prefix: addressPrefix,
+        chain_id: chainId,
+    });
 }
 
 /**
