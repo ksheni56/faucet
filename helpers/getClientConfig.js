@@ -9,6 +9,8 @@ function getClientConfig() {
         'RECAPTCHA_SITE_KEY',
         'STEEMJS_URL',
         'DEFAULT_REDIRECT_URI',
+        'ADDRESS_PREFIX',
+        'CHAIN_ID',
     ];
 
     return JSON.stringify(
