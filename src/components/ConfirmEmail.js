@@ -109,7 +109,7 @@ class Index extends Component {
                                     <h1 style={{ color: '#ffffff' }}>
                                         <FormattedMessage id="oops" />
                                     </h1>
-                                    <p>{error}</p>
+                                    <p style={{ color: '#ffffff' }}>{error}</p>
                                     {!completed && (
                                         <p style={{ color: '#ffffff' }}>
                                             <Link
