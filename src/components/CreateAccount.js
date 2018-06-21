@@ -13,7 +13,7 @@ import locales from '../../helpers/locales.json';
 class CreateAccount extends Component {
     static defaultProps = {
         location: PropTypes.shape(),
-        form: PropTypes.shape()
+        form: PropTypes.shape(),
     };
     static propTypes = {
         location: PropTypes.shape(),
@@ -21,7 +21,7 @@ class CreateAccount extends Component {
         locale: PropTypes.string.isRequired,
         setLocale: PropTypes.func.isRequired,
         setTrackingId: PropTypes.func.isRequired,
-        logCheckpoint: PropTypes.func.isRequired
+        logCheckpoint: PropTypes.func.isRequired,
     };
 
     constructor(props) {
@@ -34,7 +34,7 @@ class CreateAccount extends Component {
             password: '',
             reservedUsername: '',
             email: '',
-            query: {}
+            query: {},
         };
     }
 
@@ -43,16 +43,16 @@ class CreateAccount extends Component {
             location: { query: { token } },
             intl,
             logCheckpoint,
-            setTrackingId
+            setTrackingId,
         } = this.props;
         if (!token) {
             this.setState({
                 step: 'error',
-                error: intl.formatMessage({ id: 'error_token_required' })
+                error: intl.formatMessage({ id: 'error_token_required' }),
             });
         } else {
             apiCall('/api/confirm_account', {
-                token
+                token,
             })
                 .then(data => {
                     if (data.success) {
@@ -64,21 +64,21 @@ class CreateAccount extends Component {
                             reservedUsername: data.reservedUsername,
                             email: data.email,
                             query: data.query,
-                            xref: data.xref
+                            xref: data.xref,
                         });
                         setTrackingId(data.xref);
                         logCheckpoint('creation_started');
                     } else {
                         this.setState({
                             step: 'error',
-                            error: intl.formatMessage({ id: data.error })
+                            error: intl.formatMessage({ id: data.error }),
                         });
                     }
                 })
                 .catch(error => {
                     this.setState({
                         step: 'error',
-                        error: intl.formatMessage({ id: error.type })
+                        error: intl.formatMessage({ id: error.type }),
                     });
                 });
         }
@@ -132,7 +132,7 @@ class CreateAccount extends Component {
         this.setState({
             step: 'password',
             stepNumber: 1,
-            username: values.username
+            username: values.username,
         });
     };
 
@@ -140,7 +140,7 @@ class CreateAccount extends Component {
         this.setState({
             step: 'password_confirm',
             stepNumber: 2,
-            password: values.password
+            password: values.password,
         });
         this.props.logCheckpoint('password_chosen');
     };
@@ -149,7 +149,7 @@ class CreateAccount extends Component {
         const {
             location: { query: { token } },
             intl,
-            logCheckpoint
+            logCheckpoint,
         } = this.props;
         const { username, password, email } = this.state;
 
@@ -157,13 +157,13 @@ class CreateAccount extends Component {
             'owner',
             'active',
             'posting',
-            'memo'
+            'memo',
         ]);
         apiCall('/api/create_account', {
             token,
             username,
             email,
-            public_keys: JSON.stringify(publicKeys)
+            public_keys: JSON.stringify(publicKeys),
         })
             .then(data => {
                 if (data.success) {
@@ -172,7 +172,7 @@ class CreateAccount extends Component {
                 } else {
                     this.setState({
                         step: 'error',
-                        error: intl.formatMessage({ id: data.error })
+                        error: intl.formatMessage({ id: data.error }),
                     });
                 }
             })
@@ -180,8 +180,8 @@ class CreateAccount extends Component {
                 this.setState({
                     step: 'error',
                     error: intl.formatMessage({
-                        id: 'error_api_create_account'
-                    })
+                        id: 'error_api_create_account',
+                    }),
                 });
             });
     };
@@ -193,15 +193,21 @@ class CreateAccount extends Component {
             error,
             username,
             reservedUsername,
-            password
+            password,
         } = this.state;
         const isPasswordOrConfirmStep =
             step === 'password' || step === 'password_confirm';
         const { setLocale, locale } = this.props;
         return (
             <div className="Signup_main">
-                <div className="signup-bg-left" />
-                <div className="signup-bg-right" />
+                <div
+                    className="signup-bg-left"
+                    style={{ background: '#272C2F' }}
+                />
+                <div
+                    className="signup-bg-right"
+                    style={{ background: '#1C2023' }}
+                />
                 <div className="language-select">
                     <Popover
                         placement="bottom"
@@ -218,7 +224,7 @@ class CreateAccount extends Component {
                         }
                         trigger="click"
                     >
-                        <Button>
+                        <Button style={{ color: '#f5222d' }}>
                             {locales[locale]}
                             <Icon type="down" />
                         </Button>
@@ -228,7 +234,7 @@ class CreateAccount extends Component {
                     <div className="Signup__form">
                         <div className="Signup__header">
                             <object
-                                data="img/logo.svg"
+                                data="img/logo.png"
                                 type="image/svg+xml"
                                 id="logo"
                                 aria-label="logo"
@@ -294,20 +300,22 @@ class CreateAccount extends Component {
                                 )}
                                 {step === 'error' && (
                                     <div>
-                                        <h1>
+                                        <h1 style={{ color: '#ffffff' }}>
                                             <FormattedMessage id="oops" />
                                         </h1>
-                                        <p>{error}</p>
+                                        <p style={{ color: '#ffffff' }}>
+                                            {error}
+                                        </p>
                                     </div>
                                 )}
                             </div>
                         )}
                         {step === 'username' && (
                             <div className="form-content">
-                                <h1>
+                                <h1 style={{ color: '#ffffff' }}>
                                     <FormattedMessage id="choose_username" />
                                 </h1>
-                                <p>
+                                <p style={{ color: '#ffffff' }}>
                                     <FormattedMessage id="choose_carefully" />
                                 </p>
                                 {username === '' && (
@@ -317,7 +325,7 @@ class CreateAccount extends Component {
                                             values={{
                                                 username: (
                                                     <b>{reservedUsername}</b>
-                                                )
+                                                ),
                                             }}
                                         />
                                     </span>
@@ -329,10 +337,10 @@ class CreateAccount extends Component {
                         )}
                         {step === 'password' && (
                             <div className="form-content">
-                                <h1>
+                                <h1 style={{ color: '#ffffff' }}>
                                     <FormattedMessage id="save_password" />
                                 </h1>
-                                <p>
+                                <p style={{ color: '#ffffff' }}>
                                     <FormattedMessage id="save_password_text" />
                                 </p>
                                 <FormCreateAccountPassword
@@ -343,10 +351,10 @@ class CreateAccount extends Component {
                         )}
                         {step === 'password_confirm' && (
                             <div className="form-content">
-                                <h1>
+                                <h1 style={{ color: '#ffffff' }}>
                                     <FormattedMessage id="confirm_account" />
                                 </h1>
-                                <p>
+                                <p style={{ color: '#ffffff' }}>
                                     <FormattedMessage id="confirm_password" />
                                 </p>
                                 <FormCreateAccountPassword
@@ -358,10 +366,10 @@ class CreateAccount extends Component {
                         )}
                         {step === 'created' && (
                             <div className="form-content">
-                                <h1>
+                                <h1 style={{ color: '#ffffff' }}>
                                     <FormattedMessage id="welcome" /> {username}
                                 </h1>
-                                <p>
+                                <p style={{ color: '#ffffff' }}>
                                     <FormattedMessage id="enjoy_steem" />
                                 </p>
                                 {!this.isWhistle() && (
