@@ -95,7 +95,7 @@
     "finish_text_1":
         "After validating your signup request, we will look it over for approval. Please be patient, as it may take time to review the account. As soon as you're approved, you will be sent a link to finalize your account.",
     "finish_text_2":
-        "You will be among the earliest members of the Steem community!",
+        "You will be among the earliest members of the VIT community!",
     "finish_text_3":
         "You're few steps aways from getting to the top of the list. Check your email and click the email validation link.",
     "generate_new_password": "Generate a new password",
@@ -123,7 +123,7 @@
     "username": "Username",
     "username_available": "Good news! The username {username} is available.",
     "username_know":
-        "Start with a username. Your username is how you'll be known on all Steem-based apps.",
+        "Start with a username. Your username is how you'll be known on all VIT-based apps.",
     "username_know_steemit":
         "Start with a username. Your username is how you'll be known on ViceTube and other VIT-based apps.",
     "username_steemit_login": "Do you already have an account? {link}",
