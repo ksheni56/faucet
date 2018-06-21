@@ -236,7 +236,7 @@ class CreateAccount extends Component {
                             <object
                                 data="img/logo.png"
                                 type="image/svg+xml"
-                                id="logo"
+                                id="app-logo"
                                 aria-label="logo"
                             />
                             {step !== 'created' &&
