@@ -366,13 +366,13 @@ class Signup extends Component {
                         )}
                         {step === 'finish' && (
                             <div className="form-content">
-                                <h1>
+                                <h1 style={{ color: '#ffffff' }}>
                                     <FormattedMessage id="almost_there" />
                                 </h1>
-                                <p>
+                                <p style={{ color: '#ffffff' }}>
                                     <FormattedMessage id="finish_text_1" />
                                 </p>
-                                <p>
+                                <p style={{ color: '#ffffff' }}>
                                     <FormattedMessage id="finish_text_2" />
                                 </p>
                             </div>

@@ -106,6 +106,7 @@ class Password extends React.Component {
                             onClick={() => {
                                 this.copyToClipboard(getFieldValue('password'));
                             }}
+                            style={{ color: '#f5222d' }}
                         >
                             <FormattedMessage id="copy_password" />
                         </a>
@@ -121,6 +122,7 @@ class Password extends React.Component {
                                     password: createSuggestedPassword(),
                                 });
                             }}
+                            style={{ color: '#f5222d' }}
                         >
                             <FormattedMessage id="generate_new_password" />
                         </a>
@@ -132,6 +134,7 @@ class Password extends React.Component {
                             type="primary"
                             htmlType="submit"
                             loading={this.state.submitting}
+                            style={{ background: '#f5222d' }}
                         >
                             <FormattedMessage id="continue" />
                         </Button>
