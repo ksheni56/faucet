@@ -7,7 +7,7 @@
     },
     "confirm_again_email": {
         "from": "ViceTube <noreply@steemit.com>",
-        "subject": "Your Steemit account is waiting...",
+        "subject": "Your ViceTube account is waiting...",
         "text":
             "You recently tried signing up for Steemit — a place to get paid for posting and sharing good content.\nWe weren't able to confirm your email address. Click this new email confirmation link to finish setting up your account:\n\n{url}\n\nCheers\n\nYour friends at ViceTube."
     },
