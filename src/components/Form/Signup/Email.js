@@ -2,7 +2,7 @@
 import React, { PropTypes } from 'react';
 import { FormattedMessage, injectIntl } from 'react-intl';
 import ReCAPTCHA from 'react-google-recaptcha';
-import { Form, Icon, Input, Button } from 'antd';
+import { Form, Icon, Input, Button, Checkbox } from 'antd';
 import apiCall from '../../../utils/api';
 import getFingerprint from '../../../../helpers/fingerprint';
 import { validateEmail, validateEmailDomain } from '../../../utils/validator';
@@ -160,6 +160,16 @@ class Email extends React.Component {
                             type="email"
                         />
                     )}
+                </Form.Item>
+                <Form.Item>
+                    <Checkbox
+                        type="primary"
+                        htmlType="submit"
+                        loading={this.state.submitting}
+                        style={{ color: '#ffffff' }}
+                    >
+                        <FormattedMessage id="age_confirm" />
+                    </Checkbox>
                 </Form.Item>
                 {getFieldDecorator('recaptcha', {
                     rules: [
