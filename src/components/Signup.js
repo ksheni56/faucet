@@ -160,14 +160,6 @@ class Signup extends Component {
 
         return (
             <div className="Signup_main">
-                <div
-                    className="signup-bg-left"
-                    style={{ background: '#272C2F' }}
-                />
-                <div
-                    className="signup-bg-right"
-                    style={{ background: '#1C2023' }}
-                />
                 <div className="language-select">
                     <Popover
                         placement="bottom"
