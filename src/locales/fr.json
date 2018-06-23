@@ -135,5 +135,6 @@
     "username_know_steemit":
         "Commencez par choisir un nom d'utilisateur. Vous serez connu sous ce nom sur ViceTube et toutes les autres applications ViceTube.",
     "username_steemit_login": "Vous avez déjà un compte ? {link}",
-    "welcome": "Welcome"
+    "welcome": "Welcome",
+    "age_confirm": "Are you 18 or older?"
 }

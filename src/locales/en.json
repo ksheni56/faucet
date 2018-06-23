@@ -127,5 +127,6 @@
     "username_know_steemit":
         "Start with a username. Your username is how you'll be known on ViceTube and other VIT-based apps.",
     "username_steemit_login": "Do you already have an account? {link}",
-    "welcome": "Welcome"
+    "welcome": "Welcome",
+    "age_confirm": "Are you 18 or older?"
 }

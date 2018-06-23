@@ -106,5 +106,6 @@
     "username_know_steemit":
         "选择一个用户名. 它是你在ViceTube和所有基于ViceTube应用的标志。",
     "username_steemit_login": "已经拥有账号? {link}",
-    "welcome": "欢迎"
+    "welcome": "欢迎",
+    "age_confirm": "Are you 18 or older?"
 }
