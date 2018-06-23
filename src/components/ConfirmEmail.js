@@ -80,14 +80,6 @@ class Index extends Component {
         } = this.state;
         return (
             <div className="Signup_main">
-                <div
-                    className="signup-bg-left"
-                    style={{ background: '#272C2F' }}
-                />
-                <div
-                    className="signup-bg-right"
-                    style={{ background: '#1C2023' }}
-                />
                 <div className="Signup__container">
                     <div className="Signup__form">
                         <div className="Signup__header">
