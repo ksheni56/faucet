@@ -135,7 +135,10 @@ class Username extends React.Component {
                                     values={{
                                         link: (
                                             <a
-                                                href="https://steemit.com/login.html"
+                                                href={
+                                                    window.config
+                                                        .DEFAULT_REDIRECT_URI
+                                                }
                                                 style={{ color: '#f5222d' }}
                                             >
                                                 <FormattedMessage id="sign_in" />

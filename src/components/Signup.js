@@ -160,14 +160,6 @@ class Signup extends Component {
 
         return (
             <div className="Signup_main">
-                <div
-                    className="signup-bg-left"
-                    style={{ background: '#272C2F' }}
-                />
-                <div
-                    className="signup-bg-right"
-                    style={{ background: '#1C2023' }}
-                />
                 <div className="language-select">
                     <Popover
                         placement="bottom"
@@ -384,6 +376,14 @@ class Signup extends Component {
                         }`}
                     >
                         {step === 'username' && (
+                            <img
+                                src="/img/xxx.png"
+                                id="signup-username"
+                                aria-label="signup-username"
+                                alt="signup-username"
+                            />
+                        )}
+                        {step === 'username' && (
                             <div>
                                 <h3 style={{ color: '#fff' }}>
                                     <FormattedMessage id="signup_username_right_title" />
@@ -392,14 +392,6 @@ class Signup extends Component {
                                     <FormattedMessage id="signup_username_right_text" />
                                 </p>
                             </div>
-                        )}
-                        {step === 'username' && (
-                            <img
-                                src="/img/thumbnail.jpg"
-                                id="signup-username"
-                                aria-label="signup-username"
-                                alt="signup-username"
-                            />
                         )}
                         {step === 'email' && (
                             <object
