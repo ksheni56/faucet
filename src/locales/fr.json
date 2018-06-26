@@ -98,6 +98,7 @@
         "Chaque segment doit être plus long",
     "error_validation_account_segment_start":
         "Chaque segment doit commencer par une lettre",
+    "error_please_confirm_you_are_18": "Please confirm you 18 or older.",
     "finish_text_1":
         "Après avoir validé votre de demande d'inscription, nous allons l'étudier. Dès que c'est votre tour et que votre demande est validée, un lien vous sera envoyé afin de finaliser votre inscription !",
     "finish_text_2":

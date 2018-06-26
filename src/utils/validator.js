@@ -109,3 +109,11 @@ export const validateEmailDomain = (rule, value, callback) => {
         callback();
     }
 };
+
+export const validateAge = (rule, value, callback) => {
+    if (!value) {
+        callback('Please confirm your age.');
+    } else {
+        callback();
+    }
+};

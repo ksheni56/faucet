@@ -76,6 +76,7 @@
     "error_validation_account_segment_end": "用户名分段必须以字母或数字结尾",
     "error_validation_account_segment_min": "用户名分段过短",
     "error_validation_account_segment_start": "用户名分段必须以字母开头",
+    "error_please_confirm_you_are_18": "Please confirm you 18 or older.",
     "finish_text_1":
         "在验证你注册申请之后，我们将进行审核。审核通过后，我们将发邮件通知你完成账号注册。",
     "finish_text_2": "你将成为ViceTube社区的早期会员！",
