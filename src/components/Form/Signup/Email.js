@@ -5,7 +5,11 @@ import ReCAPTCHA from 'react-google-recaptcha';
 import { Form, Icon, Input, Button, Checkbox } from 'antd';
 import apiCall from '../../../utils/api';
 import getFingerprint from '../../../../helpers/fingerprint';
-import { validateEmail, validateEmailDomain } from '../../../utils/validator';
+import {
+    validateEmail,
+    validateEmailDomain,
+    validateAge,
+} from '../../../utils/validator';
 
 class Email extends React.Component {
     static contextTypes = {
@@ -162,14 +166,27 @@ class Email extends React.Component {
                     )}
                 </Form.Item>
                 <Form.Item>
-                    <Checkbox
-                        type="primary"
-                        htmlType="submit"
-                        loading={this.state.submitting}
-                        style={{ color: '#ffffff' }}
-                    >
-                        <FormattedMessage id="age_confirm" />
-                    </Checkbox>
+                    {getFieldDecorator('ageConfirm', {
+                        rules: [
+                            {
+                                required: true,
+                                message: intl.formatMessage({
+                                    id: 'error_please_confirm_you_are_18',
+                                }),
+                            },
+                            {
+                                validator: validateAge,
+                                message: intl.formatMessage({
+                                    id: 'error_please_confirm_you_are_18',
+                                }),
+                            },
+                        ],
+                        initialValue: false,
+                    })(
+                        <Checkbox style={{ color: '#ffffff' }}>
+                            <FormattedMessage id="age_confirm" />
+                        </Checkbox>
+                    )}
                 </Form.Item>
                 {getFieldDecorator('recaptcha', {
                     rules: [

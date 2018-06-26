@@ -92,6 +92,7 @@
         "Each username segment should be longer",
     "error_validation_account_segment_start":
         "Each username segment should start with a letter",
+    "error_please_confirm_you_are_18": "Please confirm you 18 or older.",
     "finish_text_1":
         "After validating your signup request, we will look it over for approval. Please be patient, as it may take time to review the account. As soon as you're approved, you will be sent a link to finalize your account.",
     "finish_text_2":
