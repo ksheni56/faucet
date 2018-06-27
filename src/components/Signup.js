@@ -18,6 +18,7 @@ class Signup extends Component {
         user: PropTypes.shape({
             username: PropTypes.string.isRequired,
             email: PropTypes.string.isRequired,
+            confirmedAge: PropTypes.bool.isRequired,
             token: PropTypes.string.isRequired,
             referrer: PropTypes.string.isRequired,
             phoneNumber: PropTypes.string.isRequired,
@@ -42,6 +43,7 @@ class Signup extends Component {
         setStep: PropTypes.func.isRequired,
         setUsername: PropTypes.func.isRequired,
         setEmail: PropTypes.func.isRequired,
+        setAgeConfirmed: PropTypes.func.isRequired,
         setPhone: PropTypes.func.isRequired,
         setPhoneFormatted: PropTypes.func.isRequired,
         setToken: PropTypes.func.isRequired,
@@ -107,7 +109,8 @@ class Signup extends Component {
 
     handleSubmitEmail = (values, token) => {
         this.props.incrementStep();
-        this.props.setEmail(values.email);
+        this.props.setEmail(values.email, values.ageConfirm);
+        this.props.setAgeConfirmed(values.ageConfirm);
         this.props.setToken(token);
         this.props.logCheckpoint('email_submitted');
     };
