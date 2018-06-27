@@ -88,6 +88,7 @@ class Email extends React.Component {
             if (!err) {
                 apiCall('/api/request_email', {
                     email: values.email,
+                    confirmedAge: values.ageConfirm,
                     fingerprint,
                     query,
                     username,

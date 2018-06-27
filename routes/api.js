@@ -177,7 +177,10 @@ router.post(
         await db.actions.create({
             action: 'request_email',
             ip: req.ip,
-            metadata: { email: req.body.email },
+            metadata: {
+                email: req.body.email,
+                confirmedAge: req.body.confirmedAge,
+            },
         });
 
         const userCount = await db.users.count({
