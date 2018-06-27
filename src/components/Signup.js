@@ -3,6 +3,7 @@ import { FormattedMessage } from 'react-intl';
 import { Button, Icon, Popover } from 'antd';
 import FormSignupUsername from './Form/Signup/Username';
 import FormSignupEmail from './Form/Signup/Email';
+import EthDetails from './Form/Signup/EthDetails';
 import FormSignupEmailChinese from './Form/Signup/EmailChinese';
 import FormSignupPhoneNumber from './Form/Signup/PhoneNumber';
 import FormSignupConfirmPhoneNumber from './Form/Signup/ConfirmPhoneNumber';
@@ -370,6 +371,7 @@ class Signup extends Component {
                                 <p style={{ color: '#ffffff' }}>
                                     <FormattedMessage id="finish_text_2" />
                                 </p>
+                                <EthDetails />
                             </div>
                         )}
                     </div>
