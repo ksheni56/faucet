@@ -111,8 +111,6 @@ class Username extends React.Component {
                             />
                         </p>
                     )}
-                <br />
-                <br />
                 <div className="form-actions">
                     <Form.Item>
                         <Button
@@ -124,31 +122,6 @@ class Username extends React.Component {
                             <FormattedMessage id="continue" />
                         </Button>
                     </Form.Item>
-                    {origin === 'steemit' && (
-                        <Form.Item>
-                            <div
-                                className="signin_redirect"
-                                style={{ color: '#ffffff' }}
-                            >
-                                <FormattedMessage
-                                    id="username_steemit_login"
-                                    values={{
-                                        link: (
-                                            <a
-                                                href={
-                                                    window.config
-                                                        .DEFAULT_REDIRECT_URI
-                                                }
-                                                style={{ color: '#f5222d' }}
-                                            >
-                                                <FormattedMessage id="sign_in" />
-                                            </a>
-                                        ),
-                                    }}
-                                />
-                            </div>
-                        </Form.Item>
-                    )}
                 </div>
             </Form>
         );
