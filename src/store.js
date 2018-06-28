@@ -9,11 +9,15 @@ import tracking from './reducers/tracking';
 const reducers = combineReducers({
     app,
     user,
-    tracking
+    tracking,
 });
 
 if (window.config.STEEMJS_URL) {
-    steem.api.setOptions({ url: window.config.STEEMJS_URL });
+    steem.api.setOptions({
+        url: window.config.STEEMJS_URL,
+        address_prefix: window.config.ADDRESS_PREFIX,
+        chain_id: window.config.CHAIN_ID,
+    });
 }
 
 const sagaMiddleware = createSagaMiddleware();

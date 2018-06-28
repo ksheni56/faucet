@@ -98,7 +98,7 @@ class Username extends React.Component {
                 {getFieldValue('username') &&
                     !getFieldError('username') &&
                     !isFieldValidating('username') && (
-                        <p>
+                        <p style={{ color: '#ffffff' }}>
                             <FormattedMessage
                                 id="username_available"
                                 values={{
@@ -117,26 +117,11 @@ class Username extends React.Component {
                             type="primary"
                             htmlType="submit"
                             loading={this.state.submitting}
+                            style={{ background: '#f5222d' }}
                         >
                             <FormattedMessage id="continue" />
                         </Button>
                     </Form.Item>
-                    {origin === 'steemit' && (
-                        <Form.Item>
-                            <div className="signin_redirect">
-                                <FormattedMessage
-                                    id="username_steemit_login"
-                                    values={{
-                                        link: (
-                                            <a href="https://steemit.com/login.html">
-                                                <FormattedMessage id="sign_in" />
-                                            </a>
-                                        ),
-                                    }}
-                                />
-                            </div>
-                        </Form.Item>
-                    )}
                 </div>
             </Form>
         );

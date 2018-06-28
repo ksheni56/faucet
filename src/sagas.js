@@ -60,6 +60,11 @@ function* logCheckpointSaga() {
     }
 }
 
+// function* getEthAddress() {
+//     console.log('ETHEREUM SAGA INVOKED!!!!');
+//     yield call();
+// }
+
 function* watchGuessCountryCodeSaga() {
     yield takeEvery('user/GUESS_COUNTRY_CODE', guessCountryCodeSaga);
 }
@@ -76,12 +81,18 @@ function* watchLogCheckpointSaga() {
     yield takeEvery('tracking/LOG_CHECKPOINT', logCheckpointSaga);
 }
 
+// function* watchEthereumSaga() {
+//     yield takeEvery('tracking/LOG_CHECKPOINT', getEthAddress);
+// }
+
 function* rootSaga() {
     yield all([
         watchGuessCountryCodeSaga(),
         watchIncrementStepSaga(),
         watchDecrementStepSaga(),
-        watchLogCheckpointSaga()
+        watchLogCheckpointSaga(),
+        // ,
+        // watchEthereumSaga(),
     ]);
 }
 

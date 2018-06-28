@@ -2,10 +2,14 @@
 import React, { PropTypes } from 'react';
 import { FormattedMessage, injectIntl } from 'react-intl';
 import ReCAPTCHA from 'react-google-recaptcha';
-import { Form, Icon, Input, Button } from 'antd';
+import { Form, Icon, Input, Button, Checkbox } from 'antd';
 import apiCall from '../../../utils/api';
 import getFingerprint from '../../../../helpers/fingerprint';
-import { validateEmail, validateEmailDomain } from '../../../utils/validator';
+import {
+    validateEmail,
+    validateEmailDomain,
+    validateAge,
+} from '../../../utils/validator';
 
 class Email extends React.Component {
     static contextTypes = {
@@ -84,11 +88,12 @@ class Email extends React.Component {
             if (!err) {
                 apiCall('/api/request_email', {
                     email: values.email,
+                    confirmedAge: values.ageConfirm,
                     fingerprint,
                     query,
                     username,
                     recaptcha: window.grecaptcha.getResponse(),
-                    xref: trackingId,
+                    //                    xref: trackingId,
                 })
                     .then(data => {
                         this.setState({ submitting: false });
@@ -161,6 +166,29 @@ class Email extends React.Component {
                         />
                     )}
                 </Form.Item>
+                <Form.Item>
+                    {getFieldDecorator('ageConfirm', {
+                        rules: [
+                            {
+                                required: true,
+                                message: intl.formatMessage({
+                                    id: 'error_please_confirm_you_are_18',
+                                }),
+                            },
+                            {
+                                validator: validateAge,
+                                message: intl.formatMessage({
+                                    id: 'error_please_confirm_you_are_18',
+                                }),
+                            },
+                        ],
+                        initialValue: false,
+                    })(
+                        <Checkbox style={{ color: '#ffffff' }}>
+                            <FormattedMessage id="age_confirm" />
+                        </Checkbox>
+                    )}
+                </Form.Item>
                 {getFieldDecorator('recaptcha', {
                     rules: [
                         {
@@ -188,6 +216,7 @@ class Email extends React.Component {
                             type="primary"
                             htmlType="submit"
                             loading={this.state.submitting}
+                            style={{ background: '#f5222d' }}
                         >
                             <FormattedMessage id="continue" />
                         </Button>
@@ -197,6 +226,7 @@ class Email extends React.Component {
                             <Button
                                 htmlType="button"
                                 className="back"
+                                style={{ color: '#f5222d' }}
                                 onClick={() => goBack('username', 0)}
                             >
                                 <FormattedMessage id="go_back" />

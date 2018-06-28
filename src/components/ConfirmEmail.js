@@ -9,7 +9,7 @@ import Loading from '../widgets/Loading';
 class Index extends Component {
     static propTypes = {
         setTrackingId: PropTypes.func.isRequired,
-        logCheckpoint: PropTypes.func.isRequired
+        logCheckpoint: PropTypes.func.isRequired,
     };
     constructor(props) {
         super(props);
@@ -20,7 +20,7 @@ class Index extends Component {
             email: null,
             token: null,
             error: '',
-            approved: null
+            approved: null,
         };
     }
 
@@ -30,7 +30,7 @@ class Index extends Component {
         if (!token) {
             this.setState({
                 status: 'error',
-                error: intl.formatMessage({ id: 'error_token_required' })
+                error: intl.formatMessage({ id: 'error_token_required' }),
             });
         } else {
             fetch(`/api/confirm_email?token=${this.props.location.query.token}`)
@@ -45,7 +45,7 @@ class Index extends Component {
                         username: data.username,
                         token: data.token,
                         xref: data.xref,
-                        approved: data.approved
+                        approved: data.approved,
                     });
                     if (data.success) {
                         setTrackingId(data.xref);
@@ -60,7 +60,7 @@ class Index extends Component {
                             completed: data.completed,
                             email: data.email,
                             username: data.username,
-                            token: data.token
+                            token: data.token,
                         });
                     });
                 });
@@ -76,19 +76,17 @@ class Index extends Component {
             username,
             token,
             approved,
-            xref
+            xref,
         } = this.state;
         return (
             <div className="Signup_main">
-                <div className="signup-bg-left" />
-                <div className="signup-bg-right" />
                 <div className="Signup__container">
                     <div className="Signup__form">
                         <div className="Signup__header">
                             <object
-                                data="img/logo.svg"
+                                data="img/logo.png"
                                 type="image/svg+xml"
-                                id="logo"
+                                id="app-logo"
                                 aria-label="logo"
                             />
                         </div>
@@ -100,12 +98,12 @@ class Index extends Component {
                             )}
                             {status === 'error' && (
                                 <div>
-                                    <h1>
+                                    <h1 style={{ color: '#ffffff' }}>
                                         <FormattedMessage id="oops" />
                                     </h1>
-                                    <p>{error}</p>
+                                    <p style={{ color: '#ffffff' }}>{error}</p>
                                     {!completed && (
-                                        <p>
+                                        <p style={{ color: '#ffffff' }}>
                                             <Link
                                                 to={`/?username=${username}&email=${email}&token=${token}&xref=${xref}`}
                                                 className="complete-signup"
@@ -118,19 +116,22 @@ class Index extends Component {
                             )}
                             {status === 'success' && (
                                 <div>
-                                    <h1>
+                                    <h1 style={{ color: '#ffffff' }}>
                                         <FormattedMessage id="thank_you" /> @{
                                             username
                                         }
                                     </h1>
-                                    <p>
+                                    <p style={{ color: '#ffffff' }}>
                                         <FormattedMessage id="email_verified" />
                                     </p>
                                     {!completed && (
-                                        <p>
+                                        <p style={{ color: '#ffffff' }}>
                                             <Link
                                                 to={`/?username=${username}&email=${email}&token=${token}`}
                                                 className="complete-signup"
+                                                style={{
+                                                    background: '#f5222d',
+                                                }}
                                             >
                                                 <FormattedMessage id="continue" />
                                             </Link>
@@ -138,13 +139,13 @@ class Index extends Component {
                                     )}
                                     {completed &&
                                         !approved && (
-                                            <p>
+                                            <p style={{ color: '#ffffff' }}>
                                                 <FormattedMessage id="email_verified_complete" />
                                             </p>
                                         )}
                                     {completed &&
                                         approved && (
-                                            <p>
+                                            <p style={{ color: '#ffffff' }}>
                                                 <FormattedMessage id="email_verified_complete_approved" />
                                             </p>
                                         )}

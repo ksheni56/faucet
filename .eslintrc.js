@@ -21,11 +21,11 @@ module.exports = {
     'consistent-return': 0,
     'arrow-parens': ['error', 'as-needed'],
     'camelcase': 0,
-    'comma-dangle': ['error', {
-      'arrays': 'only-multiline',
-      'objects': 'only-multiline',
-      'imports': 'never',
-      'exports': 'never',
+    'comma-dangle': ['ignore', {
+      'arrays': 'ignore',
+      'objects': 'ignore',
+      'imports': 'ignore',
+      'exports': 'ignore',
       'functions': 'ignore'
     }],
     'import/no-extraneous-dependencies': 0,

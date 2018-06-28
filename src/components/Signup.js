@@ -3,6 +3,7 @@ import { FormattedMessage } from 'react-intl';
 import { Button, Icon, Popover } from 'antd';
 import FormSignupUsername from './Form/Signup/Username';
 import FormSignupEmail from './Form/Signup/Email';
+import EthDetails from './Form/Signup/EthDetails';
 import FormSignupEmailChinese from './Form/Signup/EmailChinese';
 import FormSignupPhoneNumber from './Form/Signup/PhoneNumber';
 import FormSignupConfirmPhoneNumber from './Form/Signup/ConfirmPhoneNumber';
@@ -13,11 +14,12 @@ import locales from '../../helpers/locales.json';
 class Signup extends Component {
     static propTypes = {
         app: PropTypes.shape({
-            locale: React.PropTypes.oneOf(['en', 'fr', 'zh'])
+            locale: React.PropTypes.oneOf(['en', 'fr', 'zh']),
         }).isRequired,
         user: PropTypes.shape({
             username: PropTypes.string.isRequired,
             email: PropTypes.string.isRequired,
+            confirmedAge: PropTypes.bool.isRequired,
             token: PropTypes.string.isRequired,
             referrer: PropTypes.string.isRequired,
             phoneNumber: PropTypes.string.isRequired,
@@ -26,14 +28,14 @@ class Signup extends Component {
             prefix: PropTypes.string,
             completed: PropTypes.bool.isRequired,
             trackingId: PropTypes.string.isRequired,
-            step: PropTypes.string.isRequired
+            step: PropTypes.string.isRequired,
         }).isRequired,
         queryParams: PropTypes.shape({
             username: PropTypes.string,
             email: PropTypes.string,
             token: PropTypes.string,
             ref: PropTypes.string,
-            xref: PropTypes.string
+            xref: PropTypes.string,
         }).isRequired,
         setLocale: PropTypes.func.isRequired,
         guessCountryCode: PropTypes.func.isRequired,
@@ -42,13 +44,14 @@ class Signup extends Component {
         setStep: PropTypes.func.isRequired,
         setUsername: PropTypes.func.isRequired,
         setEmail: PropTypes.func.isRequired,
+        setAgeConfirmed: PropTypes.func.isRequired,
         setPhone: PropTypes.func.isRequired,
         setPhoneFormatted: PropTypes.func.isRequired,
         setToken: PropTypes.func.isRequired,
         setPrefix: PropTypes.func.isRequired,
         setCompleted: PropTypes.func.isRequired,
         setTrackingId: PropTypes.func.isRequired,
-        logCheckpoint: PropTypes.func.isRequired
+        logCheckpoint: PropTypes.func.isRequired,
     };
 
     static defaultProps = {
@@ -57,11 +60,11 @@ class Signup extends Component {
             email: undefined,
             token: undefined,
             ref: undefined,
-            xref: undefined
+            xref: undefined,
         },
         user: {
-            countryCode: null
-        }
+            countryCode: null,
+        },
     };
 
     componentWillMount() {
@@ -71,12 +74,12 @@ class Signup extends Component {
                 username: paramUsername,
                 email: paramEmail,
                 token: paramToken,
-                xref: paramXref
+                xref: paramXref,
             },
             guessCountryCode,
             setStep,
             setTrackingId,
-            logCheckpoint
+            logCheckpoint,
         } = this.props;
 
         guessCountryCode();
@@ -86,7 +89,8 @@ class Signup extends Component {
         }
 
         if (paramEmail && paramUsername && paramToken) {
-            setStep('phoneNumber');
+            //setStep('phoneNumber');
+            setStep('finish');
         }
 
         if (!paramUsername && step === 'username') {
@@ -106,7 +110,8 @@ class Signup extends Component {
 
     handleSubmitEmail = (values, token) => {
         this.props.incrementStep();
-        this.props.setEmail(values.email);
+        this.props.setEmail(values.email, values.ageConfirm);
+        this.props.setAgeConfirmed(values.ageConfirm);
         this.props.setToken(token);
         this.props.logCheckpoint('email_submitted');
     };
@@ -138,15 +143,15 @@ class Signup extends Component {
                 step,
                 prefix,
                 referrer,
-                trackingId
+                trackingId,
             },
             queryParams: {
                 username: paramUsername,
                 email: paramEmail,
                 token: paramToken,
-                ref: paramRef
+                ref: paramRef,
             },
-            setLocale
+            setLocale,
         } = this.props;
 
         const stepNumber = steps.indexOf(step);
@@ -159,8 +164,6 @@ class Signup extends Component {
 
         return (
             <div className="Signup_main">
-                <div className="signup-bg-left" />
-                <div className="signup-bg-right" />
                 <div className="language-select">
                     <Popover
                         placement="bottom"
@@ -177,7 +180,7 @@ class Signup extends Component {
                         }
                         trigger="click"
                     >
-                        <Button>
+                        <Button style={{ color: '#f5222d' }}>
                             {locales[locale]}
                             <Icon type="down" />
                         </Button>
@@ -187,9 +190,9 @@ class Signup extends Component {
                     <div className="Signup__form">
                         <div className="Signup__header">
                             <object
-                                data="img/logo.svg"
+                                data="img/logo.png"
                                 type="image/svg+xml"
-                                id="logo"
+                                id="app-logo"
                                 aria-label="logo"
                             />
                             {step !== 'finish' &&
@@ -244,18 +247,10 @@ class Signup extends Component {
                         </div>
                         {step === 'username' && (
                             <div className="form-content">
-                                {referrer === 'steemit' && (
-                                    <object
-                                        data="img/steemit-logo.svg"
-                                        type="image/svg+xml"
-                                        id="app-logo"
-                                        aria-label="logo"
-                                    />
-                                )}
-                                <h1>
+                                <h1 style={{ color: '#ffffff' }}>
                                     <FormattedMessage id="get_started" />
                                 </h1>
-                                <p>
+                                <p style={{ color: '#ffffff' }}>
                                     {referrer === 'steemit' && (
                                         <FormattedMessage id="username_know_steemit" />
                                     )}
@@ -273,10 +268,10 @@ class Signup extends Component {
                         )}
                         {step === 'email' && (
                             <div className="form-content two-actions">
-                                <h1>
+                                <h1 style={{ color: '#ffffff' }}>
                                     <FormattedMessage id="enter_email" />
                                 </h1>
-                                <p>
+                                <p style={{ color: '#ffffff' }}>
                                     <FormattedMessage id="confirm_existence" />
                                 </p>
                                 {countryCode !== 'CN' && (
@@ -332,13 +327,13 @@ class Signup extends Component {
                                                     onClick={() =>
                                                         this.setState({
                                                             step: 'phoneNumber',
-                                                            stepNumber: 2
+                                                            stepNumber: 2,
                                                         })
                                                     }
                                                 >
                                                     <FormattedMessage id="edit" />
                                                 </a>
-                                            )
+                                            ),
                                         }}
                                     />
                                     <br />
@@ -357,25 +352,29 @@ class Signup extends Component {
                         )}
                         {step === 'checkYourEmail' && (
                             <div className="form-content">
-                                <h1>
+                                <h1 style={{ color: '#ffffff' }}>
                                     <FormattedMessage id="almost_there_email" />
                                 </h1>
-                                <p>
+                                <p style={{ color: '#ffffff' }}>
                                     <FormattedMessage id="finish_text_3" />
                                 </p>
                             </div>
                         )}
                         {step === 'finish' && (
                             <div className="form-content">
-                                <h1>
+                                <h1 style={{ color: '#ffffff' }}>
                                     <FormattedMessage id="almost_there" />
                                 </h1>
-                                <p>
+                                <p style={{ color: '#ffffff' }}>
                                     <FormattedMessage id="finish_text_1" />
                                 </p>
-                                <p>
+                                <p style={{ color: '#ffffff' }}>
                                     <FormattedMessage id="finish_text_2" />
                                 </p>
+                                <p style={{ color: '#ffffff' }}>
+                                    <FormattedMessage id="eth_payment" />
+                                </p>
+                                <EthDetails {...this.props} />
                             </div>
                         )}
                     </div>
@@ -385,22 +384,22 @@ class Signup extends Component {
                         }`}
                     >
                         {step === 'username' && (
-                            <div>
-                                <h3>
-                                    <FormattedMessage id="signup_username_right_title" />
-                                </h3>
-                                <p>
-                                    <FormattedMessage id="signup_username_right_text" />
-                                </p>
-                            </div>
-                        )}
-                        {step === 'username' && (
                             <img
-                                src="/img/signup-username.png"
+                                src="/img/xxx.png"
                                 id="signup-username"
                                 aria-label="signup-username"
                                 alt="signup-username"
                             />
+                        )}
+                        {step === 'username' && (
+                            <div>
+                                <h3 style={{ color: '#fff' }}>
+                                    <FormattedMessage id="signup_username_right_title" />
+                                </h3>
+                                <p style={{ color: '#fff' }}>
+                                    <FormattedMessage id="signup_username_right_text" />
+                                </p>
+                            </div>
                         )}
                         {step === 'email' && (
                             <object
