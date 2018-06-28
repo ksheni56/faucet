@@ -43,11 +43,7 @@ class EthDetails extends React.Component {
             this.state.ethAddress;
         return (
             <Form.Item>
-                <p style={{ color: '#ffffff' }}>
-                    <FormattedMessage id="eth_payment" />
-                </p>
                 <p style={{ color: '#ffffff' }}>{this.state.ethAddress}</p>
-                <br />
                 <img src={this.qrsrc} alt="eth-qrcode" />
             </Form.Item>
         );

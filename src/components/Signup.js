@@ -371,6 +371,9 @@ class Signup extends Component {
                                 <p style={{ color: '#ffffff' }}>
                                     <FormattedMessage id="finish_text_2" />
                                 </p>
+                                <p style={{ color: '#ffffff' }}>
+                                    <FormattedMessage id="eth_payment" />
+                                </p>
                                 <EthDetails {...this.props} />
                             </div>
                         )}
