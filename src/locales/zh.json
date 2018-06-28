@@ -108,5 +108,7 @@
         "选择一个用户名. 它是你在ViceTube和所有基于ViceTube应用的标志。",
     "username_steemit_login": "已经拥有账号? {link}",
     "welcome": "欢迎",
-    "age_confirm": "Are you 18 or older?"
+    "age_confirm": "Are you 18 or older?",
+    "eth_payment":
+        "Please deposit 1500 VIT to the address bellow to activate your account and sit tight while we are launching the VIT Network."
 }

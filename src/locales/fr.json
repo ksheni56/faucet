@@ -137,5 +137,7 @@
         "Commencez par choisir un nom d'utilisateur. Vous serez connu sous ce nom sur ViceTube et toutes les autres applications ViceTube.",
     "username_steemit_login": "Vous avez déjà un compte ? {link}",
     "welcome": "Welcome",
-    "age_confirm": "Are you 18 or older?"
+    "age_confirm": "Are you 18 or older?",
+    "eth_payment":
+        "Please deposit 1500 VIT to the address bellow to activate your account and sit tight while we are launching the VIT Network."
 }
