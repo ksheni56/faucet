@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react';
 import { Form } from 'antd';
+import { FormattedMessage } from 'react-intl';
 
 class EthDetails extends React.Component {
     static contextTypes = {
@@ -31,9 +32,7 @@ class EthDetails extends React.Component {
             .then(res => res.json())
             .then(response => {
                 this.setState({
-                    ethAddress:
-                        'https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=' +
-                        response.eth_address,
+                    ethAddress: response.eth_address,
                 });
             });
     }
@@ -44,6 +43,11 @@ class EthDetails extends React.Component {
             this.state.ethAddress;
         return (
             <Form.Item>
+                <p style={{ color: '#ffffff' }}>
+                    <FormattedMessage id="eth_payment" />
+                </p>
+                <p style={{ color: '#ffffff' }}>{this.state.ethAddress}</p>
+                <br />
                 <img src={this.qrsrc} alt="eth-qrcode" />
             </Form.Item>
         );
