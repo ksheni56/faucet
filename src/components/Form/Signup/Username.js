@@ -98,7 +98,7 @@ class Username extends React.Component {
                 {getFieldValue('username') &&
                     !getFieldError('username') &&
                     !isFieldValidating('username') && (
-                        <p style={{ color: '#ffffff' }}>
+                        <p>
                             <FormattedMessage
                                 id="username_available"
                                 values={{
