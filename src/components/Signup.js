@@ -169,7 +169,7 @@ class Signup extends Component {
                 <div className="Signup__container">
                     <div className="Signup__form">
                         <div className="Signup__header">
-                            <img src="img/logo.png" />
+                            <img src="img/logo.png" className="logo" />
                             {step !== 'finish' &&
                                 step !== 'checkYourEmail' && (
                                     <div className="Signup__steps">
