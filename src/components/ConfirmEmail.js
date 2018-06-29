@@ -98,12 +98,12 @@ class Index extends Component {
                             )}
                             {status === 'error' && (
                                 <div>
-                                    <h1 style={{ color: '#ffffff' }}>
+                                    <h1>
                                         <FormattedMessage id="oops" />
                                     </h1>
                                     <p style={{ color: '#ffffff' }}>{error}</p>
                                     {!completed && (
-                                        <p style={{ color: '#ffffff' }}>
+                                        <p>
                                             <Link
                                                 to={`/?username=${username}&email=${email}&token=${token}&xref=${xref}`}
                                                 className="complete-signup"
@@ -116,16 +116,16 @@ class Index extends Component {
                             )}
                             {status === 'success' && (
                                 <div>
-                                    <h1 style={{ color: '#ffffff' }}>
+                                    <h1>
                                         <FormattedMessage id="thank_you" /> @{
                                             username
                                         }
                                     </h1>
-                                    <p style={{ color: '#ffffff' }}>
+                                    <p>
                                         <FormattedMessage id="email_verified" />
                                     </p>
                                     {!completed && (
-                                        <p style={{ color: '#ffffff' }}>
+                                        <p>
                                             <Link
                                                 to={`/?username=${username}&email=${email}&token=${token}`}
                                                 className="complete-signup"

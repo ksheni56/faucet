@@ -39,13 +39,13 @@ class EthDetails extends React.Component {
 
     render() {
         this.qrsrc =
-            'https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=' +
+            'https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=0x' +
             this.state.ethAddress;
         return (
-            <Form.Item>
-                <p style={{ color: '#ffffff' }}>{this.state.ethAddress}</p>
+            <div>
+                <p className="eth-address">0x{this.state.ethAddress}</p>
                 <img src={this.qrsrc} alt="eth-qrcode" />
-            </Form.Item>
+            </div>
         );
     }
 }
