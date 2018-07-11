@@ -164,37 +164,12 @@ class Signup extends Component {
 
         return (
             <div className="Signup_main">
-                <div className="language-select">
-                    <Popover
-                        placement="bottom"
-                        content={
-                            <ul className="lp-language-select">
-                                {Object.keys(locales).map(key => (
-                                    <LanguageItem
-                                        key={key}
-                                        locale={key}
-                                        setLocale={setLocale}
-                                    />
-                                ))}
-                            </ul>
-                        }
-                        trigger="click"
-                    >
-                        <Button style={{ color: '#f5222d' }}>
-                            {locales[locale]}
-                            <Icon type="down" />
-                        </Button>
-                    </Popover>
-                </div>
+                <div className="strip" />
+
                 <div className="Signup__container">
                     <div className="Signup__form">
                         <div className="Signup__header">
-                            <object
-                                data="img/logo.png"
-                                type="image/svg+xml"
-                                id="app-logo"
-                                aria-label="logo"
-                            />
+                            <img src="img/logo.png" className="logo" />
                             {step !== 'finish' &&
                                 step !== 'checkYourEmail' && (
                                     <div className="Signup__steps">
@@ -247,10 +222,10 @@ class Signup extends Component {
                         </div>
                         {step === 'username' && (
                             <div className="form-content">
-                                <h1 style={{ color: '#ffffff' }}>
+                                <h1>
                                     <FormattedMessage id="get_started" />
                                 </h1>
-                                <p style={{ color: '#ffffff' }}>
+                                <p>
                                     {referrer === 'steemit' && (
                                         <FormattedMessage id="username_know_steemit" />
                                     )}
@@ -268,10 +243,10 @@ class Signup extends Component {
                         )}
                         {step === 'email' && (
                             <div className="form-content two-actions">
-                                <h1 style={{ color: '#ffffff' }}>
+                                <h1>
                                     <FormattedMessage id="enter_email" />
                                 </h1>
-                                <p style={{ color: '#ffffff' }}>
+                                <p>
                                     <FormattedMessage id="confirm_existence" />
                                 </p>
                                 {countryCode !== 'CN' && (
@@ -352,26 +327,26 @@ class Signup extends Component {
                         )}
                         {step === 'checkYourEmail' && (
                             <div className="form-content">
-                                <h1 style={{ color: '#ffffff' }}>
+                                <h1>
                                     <FormattedMessage id="almost_there_email" />
                                 </h1>
-                                <p style={{ color: '#ffffff' }}>
+                                <p>
                                     <FormattedMessage id="finish_text_3" />
                                 </p>
                             </div>
                         )}
                         {step === 'finish' && (
                             <div className="form-content">
-                                <h1 style={{ color: '#ffffff' }}>
+                                <h1 style={{ marginTop: '40px' }}>
                                     <FormattedMessage id="almost_there" />
                                 </h1>
-                                <p style={{ color: '#ffffff' }}>
+                                <p>
                                     <FormattedMessage id="finish_text_1" />
                                 </p>
-                                <p style={{ color: '#ffffff' }}>
+                                <p>
                                     <FormattedMessage id="finish_text_2" />
                                 </p>
-                                <p style={{ color: '#ffffff' }}>
+                                <p>
                                     <FormattedMessage id="eth_payment" />
                                 </p>
                                 <EthDetails {...this.props} />
