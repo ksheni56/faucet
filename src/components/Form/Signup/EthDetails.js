@@ -21,7 +21,7 @@ class EthDetails extends React.Component {
         };
 
         console.log('Generating ETH QR code...');
-        fetch('https://payment.proto.vit.tube/signupfee/', {
+        fetch('https://payment.vit.tube/signupfee/', {
             method: 'POST',
             headers: {
                 Accept: 'application/json',
