@@ -810,8 +810,9 @@ router.post(
         });
         const oneWeek = 7 * 24 * 60 * 60 * 1000;
         if (
-            user &&
-            user.username_booked_at.getTime() + oneWeek >= new Date().getTime()
+            user /* &&
+            // NOTE(svitx/2018-07-09): Reserving indefinitely until offical launch
+            user.username_booked_at.getTime() + oneWeek >= new Date().getTime()*/
         ) {
             throw new ApiError({
                 type: 'error_api_username_reserved',
