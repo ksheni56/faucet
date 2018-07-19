@@ -78,6 +78,8 @@ class Index extends Component {
             approved,
             xref,
         } = this.state;
+        const encEmail = encodeURIComponent(email);
+        const encUsername = encodeURIComponent(username);
         return (
             <div className="Signup_main">
                 <div className="Signup__container">
@@ -105,7 +107,7 @@ class Index extends Component {
                                     {!completed && (
                                         <p>
                                             <Link
-                                                to={`/?username=${username}&email=${email}&token=${token}&xref=${xref}`}
+                                                to={`/?username=${encUsername}&email=${encEmail}&token=${token}&xref=${xref}`}
                                                 className="complete-signup"
                                             >
                                                 <FormattedMessage id="continue" />
@@ -127,7 +129,7 @@ class Index extends Component {
                                     {!completed && (
                                         <p>
                                             <Link
-                                                to={`/?username=${username}&email=${email}&token=${token}`}
+                                                to={`/?username=${encUsername}&email=${encEmail}&token=${token}`}
                                                 className="complete-signup"
                                                 style={{
                                                     background: '#f5222d',
