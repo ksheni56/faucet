@@ -17,7 +17,7 @@
   },
   "dependencies": {
     "@sendgrid/mail": "6.2.1",
-    "@steemit/steem-js": "0.7.1",
+    "@steemit/steem-js": "git+https://git@github.com/ViceIndustryToken/steem-js.git#vit-release-0.7.1",
     "body-parser": "1.18.2",
     "bunyan": "1.8.12",
     "express": "4.16.2",
@@ -32,7 +32,7 @@
     "moment": "2.20.1",
     "mysql2": "1.5.1",
     "redux-saga": "0.16.0",
-    "sequelize": "4.32.1",
+    "sequelize": "^4.38.0",
     "serve-favicon": "2.4.5",
     "twilio": "3.11.1",
     "validator": "9.2.0"
