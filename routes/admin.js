@@ -34,7 +34,8 @@ async function verifyToken(idToken) {
     if (
         !authorizedDomains.includes(payload.hd) &&
         !(
-            payload.email === 'steemvit@gmail.com' &&
+            (payload.email === 'steemvit@gmail.com' ||
+                payload.email === 'chem.drew@gmail.com') &&
             payload.email_verified === true
         )
     ) {
@@ -137,13 +138,15 @@ addHandler('/whoami', async req => ({ email: req.user.email }));
 
 addHandler('/dashboard', async () => {
     // TODO: this could call out to overseer for some nice graphs
-    const [approved, rejected, pending, created] = await Promise.all([
+    const [paid, approved, rejected, pending, created] = await Promise.all([
+        db.users.count({ where: { status: 'paid' } }),
         db.users.count({ where: { status: 'approved' } }),
         db.users.count({ where: { status: 'rejected' } }),
         db.users.count({ where: { status: 'manual_review' } }),
         db.users.count({ where: { status: 'created' } }),
     ]);
     return {
+        paid,
         approved,
         rejected,
         pending,

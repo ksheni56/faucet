@@ -208,7 +208,7 @@ class SignupDetail extends React.Component<
     const title = `Signup ${this.props.match.id}`
     let details = null
     const actionsEnabled =
-      signup && signup.status === "manual_review" && !cardAction
+      signup && (signup.status === "manual_review" || signup.status === "paid") && !cardAction
     const cardActions = (
       <div>
         <Button

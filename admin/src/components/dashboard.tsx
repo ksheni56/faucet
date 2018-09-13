@@ -42,6 +42,18 @@ class Dashboard extends React.Component<DashboardProps, DashboardState> {
             <Col xs={12} lg={6}>
               <Card
                 title={
+                  <Link to="/admin/signups?q=status:paid">
+                    Paid, awaiting approval
+                  </Link>
+                }
+                bordered={false}
+              >
+                {data.paid}
+              </Card>
+            </Col>
+            <Col xs={12} lg={6}>
+              <Card
+                title={
                   <Link to="/admin/signups?q=status:manual_review">
                     Awaiting review
                   </Link>
