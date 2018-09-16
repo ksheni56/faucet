@@ -43,7 +43,7 @@ class Dashboard extends React.Component<DashboardProps, DashboardState> {
               <Card
                 title={
                   <Link to="/admin/signups?q=status:paid">
-                    Paid, awaiting approval
+                    Paid, Awaiting approval
                   </Link>
                 }
                 bordered={false}
@@ -55,7 +55,7 @@ class Dashboard extends React.Component<DashboardProps, DashboardState> {
               <Card
                 title={
                   <Link to="/admin/signups?q=status:manual_review">
-                    Awaiting review
+                    Awaiting payment
                   </Link>
                 }
                 bordered={false}

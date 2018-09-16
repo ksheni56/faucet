@@ -228,6 +228,15 @@ class SignupDetail extends React.Component<
         >
           Reject
         </Button>
+        <Divider type="vertical" />
+        <Button
+          loading={cardAction === CardAction.Hold}
+          disabled={!actionsEnabled}
+          onClick={this.onHold}
+          size="small"
+        >
+          Hold on Name
+        </Button>
       </div>
     )
     const verifiedLabel = (verified: boolean) => (
