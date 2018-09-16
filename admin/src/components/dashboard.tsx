@@ -86,6 +86,16 @@ class Dashboard extends React.Component<DashboardProps, DashboardState> {
             <Col xs={12} lg={6}>
               <Card
                 title={
+                  <Link to="/admin/signups?q=status:paid_quarantine">Paid, Hold on Name</Link>
+                }
+                bordered={false}
+              >
+                {data.paid_quarantine}
+              </Card>
+            </Col>
+            <Col xs={12} lg={6}>
+              <Card
+                title={
                   <Link to="/admin/signups?q=status:created">Created</Link>
                 }
                 bordered={false}

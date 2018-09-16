@@ -20,6 +20,7 @@ interface SignupDetailProps {
 enum CardAction {
   Approve,
   Reject,
+  Hold,
 }
 
 interface SignupDetailState {
@@ -202,6 +203,32 @@ class SignupDetail extends React.Component<
         this.setState({ cardAction: undefined })
       })
   }
+
+  public onHold = () => {
+    const { signup } = this.state
+    if (!signup) {
+      return
+    }
+    this.setState({ cardAction: CardAction.Hold })
+    this.props.api
+      .call("/hold_signups", { ids: [signup.id] })
+      .then((result) => {
+        if (result[0].error) {
+          throw new Error(result[0].error)
+        } else {
+          signup.status = "paid_quarantine"
+          this.setState({ signup, cardAction: undefined })
+        }
+      })
+      .catch((error) => {
+        Modal.error({
+          content: error.message || String(error),
+          title: "Unable to hold on name",
+        })
+        this.setState({ cardAction: undefined })
+      })
+  }
+
 
   public render() {
     const { actions, loading, signup, location, cardAction } = this.state
