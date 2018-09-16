@@ -21,7 +21,7 @@
     "email_verified_complete_approved":
         "Vous êtes approuvé! Merci de consulter vos emails.",
     "enjoy_steem":
-        "Vous pouvez profiter de ViceTube et de toutes ses fonctionnalités.",
+        "Vous pouvez profiter de TouchTube et de toutes ses fonctionnalités.",
     "enter_confirmation_code": "Saisissez le code de confirmation",
     "enter_email": "Saisissez votre adresse mail",
     "enter_phone": "Saisissez votre numéro de téléphone",
@@ -102,7 +102,7 @@
     "finish_text_1":
         "Après avoir validé votre de demande d'inscription, nous allons l'étudier. Dès que c'est votre tour et que votre demande est validée, un lien vous sera envoyé afin de finaliser votre inscription !",
     "finish_text_2":
-        "Vous serez parmis les premiers membres de la communauté ViceTube !",
+        "Vous serez parmis les premiers membres de la communauté TouchTube !",
     "finish_text_3":
         "Il ne vous reste plus que quelques étapes afin d'être en haut de la liste. Vérifiez vos emails et cliquez sur le lien de confirmation.",
     "generate_new_password": "Générer un nouveau mot de passe",
@@ -114,7 +114,7 @@
     "phone_number": "Numéro de téléphone",
     "please_confirm":
         "Veuillez saisir le code ci-dessous afin de le confirmer.",
-    "redirect_button_text": "Aller sur ViceTube",
+    "redirect_button_text": "Aller sur TouchTube",
     "resend": "Renvoyer",
     "save_password": "Sauvegarder votre mot de passe",
     "save_password_text":
@@ -122,19 +122,19 @@
     "send_sms": "Nous devons vous envoyer un SMS.",
     "sign_in": "Connectez-vous",
     "signup_username_right_text":
-        "Un seul et unique compte vous donne accès à toutes les applications ViceTube",
+        "Un seul et unique compte vous donne accès à toutes les applications TouchTube",
     "signup_username_right_title": "Vous n'avez besoin que d'un seul compte",
     "sms_code": "Nous avons envoyé le code par SMS au {phoneNumber} {editLink}",
-    "steem_signup": "Inscription ViceTube",
+    "steem_signup": "Inscription TouchTube",
     "success_new_code_sent": "Nouveau code envoyé",
     "thank_you": "Merci!",
     "username": "Nom d'utilisateur",
     "username_available":
         "Bonne nouvelle! L'utilisateur {username} est disponible.",
     "username_know":
-        "Commencez par choisir un nom d'utilisateur. Vous serez connu sous ce nom pour toutes les applications ViceTube.",
+        "Commencez par choisir un nom d'utilisateur. Vous serez connu sous ce nom pour toutes les applications TouchTube.",
     "username_know_steemit":
-        "Commencez par choisir un nom d'utilisateur. Vous serez connu sous ce nom sur ViceTube et toutes les autres applications ViceTube.",
+        "Commencez par choisir un nom d'utilisateur. Vous serez connu sous ce nom sur TouchTube et toutes les autres applications TouchTube.",
     "username_steemit_login": "Vous avez déjà un compte ? {link}",
     "welcome": "Welcome",
     "age_confirm": "Are you 18 or older?",
