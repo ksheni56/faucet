@@ -65,7 +65,11 @@ class Email extends React.Component {
                 window.grecaptcha.execute();
                 setTimeout(() => {
                     this.executeRecaptchaAndSubmit();
-                }, 100);
+                }, 1000);
+                // NOTE(svitx/2018-10-26):
+                //   Magic delay, if recaptcha service is too slow, this will
+                //   cause retry requests to stack up and stall the browser.
+                //   Increased from 100ms
             } catch (err) {
                 // Do nothing, it's here to prevent the exception
                 // where the recpatcha isn't mounted yet.
