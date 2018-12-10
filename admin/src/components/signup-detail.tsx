@@ -20,6 +20,7 @@ interface SignupDetailProps {
 enum CardAction {
   Approve,
   Reject,
+  Hold,
 }
 
 interface SignupDetailState {
@@ -203,12 +204,38 @@ class SignupDetail extends React.Component<
       })
   }
 
+  public onHold = () => {
+    const { signup } = this.state
+    if (!signup) {
+      return
+    }
+    this.setState({ cardAction: CardAction.Hold })
+    this.props.api
+      .call("/hold_signups", { ids: [signup.id] })
+      .then((result) => {
+        if (result[0].error) {
+          throw new Error(result[0].error)
+        } else {
+          signup.status = "paid_quarantine"
+          this.setState({ signup, cardAction: undefined })
+        }
+      })
+      .catch((error) => {
+        Modal.error({
+          content: error.message || String(error),
+          title: "Unable to hold on name",
+        })
+        this.setState({ cardAction: undefined })
+      })
+  }
+
+
   public render() {
     const { actions, loading, signup, location, cardAction } = this.state
     const title = `Signup ${this.props.match.id}`
     let details = null
     const actionsEnabled =
-      signup && signup.status === "manual_review" && !cardAction
+      signup && (signup.status === "manual_review" || signup.status === "paid") && !cardAction
     const cardActions = (
       <div>
         <Button
@@ -227,6 +254,15 @@ class SignupDetail extends React.Component<
           size="small"
         >
           Reject
+        </Button>
+        <Divider type="vertical" />
+        <Button
+          loading={cardAction === CardAction.Hold}
+          disabled={!actionsEnabled}
+          onClick={this.onHold}
+          size="small"
+        >
+          Hold on Name
         </Button>
       </div>
     )

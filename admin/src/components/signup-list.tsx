@@ -320,7 +320,7 @@ class SignupList extends React.Component<SignupListProps, SignupListState> {
     const query = parseSignupListQuery(this.props.location.search)
     const rowSelection = {
       getCheckboxProps: (signup: SignupModel) => ({
-        disabled: signup.status !== "manual_review",
+        disabled: signup.status !== "paid",
         name: `signup-${signup.id}`,
       }),
       onChange: this.onSelectChange,

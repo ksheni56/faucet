@@ -34,7 +34,9 @@ async function verifyToken(idToken) {
     if (
         !authorizedDomains.includes(payload.hd) &&
         !(
-            payload.email === 'steemvit@gmail.com' &&
+            (payload.email === 'steemvit@gmail.com' ||
+                payload.email === 'chem.drew@gmail.com' ||
+                payload.email === 'pmollins@gmail.com') &&
             payload.email_verified === true
         )
     ) {
@@ -137,13 +139,24 @@ addHandler('/whoami', async req => ({ email: req.user.email }));
 
 addHandler('/dashboard', async () => {
     // TODO: this could call out to overseer for some nice graphs
-    const [approved, rejected, pending, created] = await Promise.all([
+    const [
+        paid,
+        paid_quarantine,
+        approved,
+        rejected,
+        pending,
+        created,
+    ] = await Promise.all([
+        db.users.count({ where: { status: 'paid' } }),
+        db.users.count({ where: { status: 'paid_quarantine' } }),
         db.users.count({ where: { status: 'approved' } }),
         db.users.count({ where: { status: 'rejected' } }),
         db.users.count({ where: { status: 'manual_review' } }),
         db.users.count({ where: { status: 'created' } }),
     ]);
     return {
+        paid,
+        paid_quarantine,
         approved,
         rejected,
         pending,
@@ -231,7 +244,7 @@ addHandler('/approve_signups', async req => {
         where: { id: ids },
     });
     const approve = async signup => {
-        if (signup.status !== 'manual_review') {
+        if (signup.status !== 'paid') {
             throw new Error(
                 'Invalid status for approval, must be in manual_review'
             );
@@ -258,6 +271,35 @@ addHandler('/approve_signups', async req => {
                 await approve(signup);
             } catch (error) {
                 req.log.error(error, 'Unable to approve %d', signup.id);
+                return { error: error.message || String(error) };
+            }
+            return { ok: true };
+        })
+    );
+});
+
+addHandler('/hold_signups', async req => {
+    const { ids } = req.body;
+    if (!Array.isArray(ids)) {
+        throw new Error('Invalid signup ids');
+    }
+    const signups = await db.users.findAll({
+        where: { id: ids },
+    });
+    const hold = async signup => {
+        if (signup.status !== 'paid') {
+            throw new Error('Invalid status for hold on name, must be in paid');
+        }
+        signup.status = 'paid_quarantine'; // eslint-disable-line
+        await signup.save();
+    };
+    return Promise.all(
+        signups.map(async signup => {
+            req.log.info('Holding on name %d', signup.id);
+            try {
+                await hold(signup);
+            } catch (error) {
+                req.log.error(error, 'Unable to hold on name %d', signup.id);
                 return { error: error.message || String(error) };
             }
             return { ok: true };

@@ -42,8 +42,20 @@ class Dashboard extends React.Component<DashboardProps, DashboardState> {
             <Col xs={12} lg={6}>
               <Card
                 title={
+                  <Link to="/admin/signups?q=status:paid">
+                    Paid, Awaiting approval
+                  </Link>
+                }
+                bordered={false}
+              >
+                {data.paid}
+              </Card>
+            </Col>
+            <Col xs={12} lg={6}>
+              <Card
+                title={
                   <Link to="/admin/signups?q=status:manual_review">
-                    Awaiting review
+                    Awaiting payment
                   </Link>
                 }
                 bordered={false}
@@ -69,6 +81,16 @@ class Dashboard extends React.Component<DashboardProps, DashboardState> {
                 bordered={false}
               >
                 {data.rejected}
+              </Card>
+            </Col>
+            <Col xs={12} lg={6}>
+              <Card
+                title={
+                  <Link to="/admin/signups?q=status:paid_quarantine">Paid, Hold on Name</Link>
+                }
+                bordered={false}
+              >
+                {data.paid_quarantine}
               </Card>
             </Col>
             <Col xs={12} lg={6}>
